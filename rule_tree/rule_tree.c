@@ -656,7 +656,7 @@ int ruletree_find_inodestat(
 	ruletree_inodestat_t	*fsptr;
 
 	SB_LOG(SB_LOGLEVEL_NOISE,
-		"ruletree_find_inodestat (dev=%lld,ino=%lld,key=%u)",
+		"ruletree_find_inodestat (dev=%lld,ino=%lld,key=%llu)",
 			(long long)handle->rfh_dev,
 			(long long)handle->rfh_ino,
 			ino_to_key(handle->rfh_ino));
@@ -698,7 +698,7 @@ ruletree_object_offset_t ruletree_set_inodestat(
 	inodesimu_t			*istat_struct)
 {
 	SB_LOG(SB_LOGLEVEL_NOISE,
-		"ruletree_set_inodestat (dev=%lld,ino=%lld,key=%u))",
+		"ruletree_set_inodestat (dev=%lld,ino=%lld,key=%llu))",
 			(long long)handle->rfh_dev,
 			(long long)handle->rfh_ino,
 			ino_to_key(handle->rfh_ino));
