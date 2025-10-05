@@ -104,7 +104,7 @@ ruletree_object_offset_t append_struct_to_ruletree_file(void *ptr, size_t size, 
 		location = lseek(ruletree_ctx.rtree_ruletree_fd, 0, SEEK_END);
 		if (write(ruletree_ctx.rtree_ruletree_fd, ptr, size) < (int)size) {
 			SB_LOG(SB_LOGLEVEL_ERROR,
-				"Failed to append a struct (%lu bytes) to the rule tree", size);
+				"Failed to append a struct (%u bytes) to the rule tree", size);
 		}
 		if (ruletree_ctx.rtree_ruletree_hdr_p)
 			ruletree_ctx.rtree_ruletree_hdr_p->rtree_file_size =
@@ -370,7 +370,7 @@ ruletree_object_offset_t ruletree_objectlist_create_list(uint32_t size)
 	wr_result = write(ruletree_ctx.rtree_ruletree_fd, a, list_size_in_bytes);
 	if ((wr_result == -1) || ((size_t)wr_result < list_size_in_bytes)) {
 		SB_LOG(SB_LOGLEVEL_ERROR,
-			"Failed to append a list (%d items, %lu bytes) to the rule tree",
+			"Failed to append a list (%d items, %u bytes) to the rule tree",
 			size, list_size_in_bytes);
 		location = 0; /* return error */
 	}
@@ -656,7 +656,7 @@ int ruletree_find_inodestat(
 	ruletree_inodestat_t	*fsptr;
 
 	SB_LOG(SB_LOGLEVEL_NOISE,
-		"ruletree_find_inodestat (dev=%lld,ino=%lld,key=%lu)",
+		"ruletree_find_inodestat (dev=%lld,ino=%lld,key=%u)",
 			(long long)handle->rfh_dev,
 			(long long)handle->rfh_ino,
 			ino_to_key(handle->rfh_ino));
@@ -698,7 +698,7 @@ ruletree_object_offset_t ruletree_set_inodestat(
 	inodesimu_t			*istat_struct)
 {
 	SB_LOG(SB_LOGLEVEL_NOISE,
-		"ruletree_set_inodestat (dev=%lld,ino=%lld,key=%lu))",
+		"ruletree_set_inodestat (dev=%lld,ino=%lld,key=%u))",
 			(long long)handle->rfh_dev,
 			(long long)handle->rfh_ino,
 			ino_to_key(handle->rfh_ino));
